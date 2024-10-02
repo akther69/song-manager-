@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%block main_block%}
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <table class="mt-5 table table-success border shadow table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Director</th>
+                    <th>Language</th>
+                    <th>Action</th>
+                </tr>
+                {%for i in albums%}
+                <tr>
+                    <td>{{i.title}}</td>
+                    <td>{{i.year}}</td>
+                    <td>{{i.director}}</td>
+                    <td>{{i.language}}</td>
+                    <td>
+                        <a href="{%url 'album-edit' i.id%}" class="btn btn-outline-dark">Edit</a>
+                        <a href="{%url 'album-delete' i.id%}" class="btn btn-outline-dark">Remove</a>
+                        <a href="{%url 'album-details' i.id%}" class="btn btn-outline-dark">View</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+{%endblock%}

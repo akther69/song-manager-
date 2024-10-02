@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%block main_block%}
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <table class="mt-5 table table-success border shadow table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>Singer</th>
+                    <th>Track Number</th>
+                    <th>Album Object</th>
+                    <th>Action</th>
+                </tr>
+                {%for s in songs%}
+                <tr>
+                    <td>{{s.title}}</td>
+                    <td>{{s.singer}}</td>
+                    <td>{{s.track_number}}</td>
+                    <td>{{s.album_object}}</td>
+                    <td class="d-flex gap-2">
+                        <a href="{%url 'song-edit' s.id%}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{%url 'song-remove' s.id%}" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+{%endblock%}
